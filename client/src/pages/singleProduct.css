@@ -1,0 +1,108 @@
+.single-wrapper {
+  display: flex;
+}
+.single-wrapper * {
+  margin: 20px;
+}
+.img-container {
+  flex: 1;
+}
+.single-img {
+  width: 650px;
+  height: 650px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.sin-info {
+  flex: 1;
+}
+
+.sin-info * {
+  margin: 10px;
+}
+.t {
+  font-weight: 400;
+}
+.D {
+  font-size: 20px;
+}
+
+.P {
+  font-weight: 400;
+  font-size: 40px;
+  color: green;
+}
+
+.filter-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 50%;
+}
+
+.size-container {
+  flex: 1;
+  display: flex;
+}
+
+.amount {
+  border-radius: 10px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid teal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.color-container {
+  flex: 1;
+  display: flex;
+}
+/* #colo-titl {
+  font-size: px;
+} */
+#op {
+  height: 40px;
+}
+
+#op * {
+  font-size: 20px;
+}
+
+.add-container {
+  display: flex;
+
+  width: 50%;
+  align-items: center;
+  justify-content: space-between;
+}
+.plus {
+  cursor: pointer;
+}
+
+.minus {
+  cursor: pointer;
+}
+
+.add-btn {
+  padding: 10px;
+  background-color: teal;
+  /* border: solid 1px teal; */
+  transition: 0.5s;
+  font-size: 15px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.add-btn:hover {
+  background: rgb(0, 177, 53);
+  color: white;
+}
+
+.amount-container {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+}

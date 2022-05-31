@@ -1,0 +1,21 @@
+.filter-container {
+  display: flex;
+  justify-content: space-between;
+}
+.filter {
+  margin: 20px;
+}
+.filter-title {
+  margin: 20px;
+}
+/* .products-list {
+  display: flex;
+} */
+.select {
+  padding: 10px;
+  margin-right: 20px;
+  cursor: pointer;
+}
+.text {
+  margin-right: 20px;
+}

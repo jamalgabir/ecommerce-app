@@ -1,6 +1,10 @@
 # This is a basic workflow to help you get started with Actions
 
 name: CI
+env:
+   SCEENER_API_KEY: ${{secrets.SCEEN_API_KEY}}
+   SAUCE_USERNAME: ${{secrets.USER_NAME}}
+   SAUCE_ACCESS_KEY: ${{secrets.ACCESS_KEY}}
 
 # Controls when the workflow will run
 on:

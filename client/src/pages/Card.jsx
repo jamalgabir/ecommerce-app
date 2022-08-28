@@ -2,8 +2,6 @@ import {  DeleteOutline } from '@material-ui/icons';
 import React, { useState } from 'react';
 import {  useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import Announcement from '../component/announcement';
-import Footer from '../component/footer';
 import Navbar from '../component/navbar';
 import StripeCheckout from 'react-stripe-checkout';
 import './Card.css'
@@ -13,6 +11,7 @@ import { useDispatch } from 'react-redux';
 import {deleteProduct } from '../redux/cartRedux';
 
 const key = process.env.REACT_APP_STRIPE;
+
 const Card = () => {
     const dispatch = useDispatch();
     const cart = useSelector(state=>state.cart)
@@ -28,10 +27,9 @@ const Card = () => {
         setStripeToken(token)
     }
 
-   const handleDelete =async (id) =>{
-       console.log(id)
+   const handleDelete = async (id) =>{
     try{
-        await dispatch(deleteProduct(id,dispatch))
+        dispatch(deleteProduct(id,dispatch))
         
     }catch(error){
         console.log(error)
@@ -41,6 +39,7 @@ useEffect(() => {
     setData(cart.products)
     
 },[cart.products])
+
    useEffect(()=>{
       const makeRequest = async ()=>{
           try{
@@ -60,10 +59,10 @@ useEffect(() => {
     return (
   <div>
       <Navbar/>
-      <Announcement/>
+      
       <h1 className='card-title'>Shopping Card</h1>
+
       <div className='top-cart-container'>
-          
       {check?
        <div className='card-container'>
           <div className='mini-container'>
@@ -76,15 +75,15 @@ useEffect(() => {
                   </div>
                   
                   <div className='two'>
-                      <Link to={`/products/find/${product._id}`}>
+                      <Link className='ttt' to={`/products/find/${product._id}`}>
                       <div>
-                          <h2>{product.title}</h2>
+                          <h4>{product.title}</h4>
                           
                       </div>
                       </Link>
                       
                       <p>${product.price}</p>
-                      <h4>{`Totale price: ${product.quantity*product.price}`}</h4>
+                      
                       <div className='size-amount'>
                           <h4>Size:</h4>
                           <p>{product.size}</p>
@@ -92,6 +91,7 @@ useEffect(() => {
                           <p>{product.color}</p>
                           <h4>{`Quantity : ${product.quantity}`}</h4>
                       </div>
+                      <h4>{`Totale price: ${product.quantity*product.price}`}</h4>
                   </div>
                   <div className='delete'>
                     <DeleteOutline onClick={() => handleDelete(product)} className='xx'/>
@@ -104,7 +104,7 @@ useEffect(() => {
                 
                ))}
                 
-                </div>
+            </div>
 
 
                  {/* Ckeck container  */}
@@ -127,6 +127,7 @@ useEffect(() => {
                         <h3 className='subtotale'>Subtotal</h3>
                         <b className='totale-price'>${cart.totale}</b>
                     </div><hr></hr>
+                    
                     <div className='checkout'>
                     <StripeCheckout name='jamal shop' 
                     image='https://assets.awwwards.com/awards/images/2012/12/best-logo-2013-3.jpg'
@@ -139,11 +140,11 @@ useEffect(() => {
     allowRememberMe={false}
     stripeKey={key}>
 
-       <button className='pay'>Pay Now</button>
+       <button className='pay1'>Checkout</button>
         </StripeCheckout>
     </div>
                     {/* <div className='btn-container'>
-                        <button className='ri'>Checkout</button>
+                        <button className='ri'></button>
                     </div> */}
                 </div>
               
@@ -159,8 +160,9 @@ useEffect(() => {
         
           
           
-          </div>:<div className='empty-cart-container'>
-                     <h2>there is no item in your cart!</h2>
+          </div>:
+          <div className='empty-cart-container'>
+                     <p>there is no item in your cart!</p>
                       <div>
                       <Link to='/'>
                        <button className='le'>Containue Shoppin</button>
@@ -169,7 +171,7 @@ useEffect(() => {
                     </div>}
     
         </div>
-      <Footer/>
+      {/* <Footer/> */}
   </div>
   );
 };

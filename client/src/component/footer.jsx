@@ -5,25 +5,8 @@ import './footer.css'
 const Footer = () => {
   return (
   <div className='fo-container'>
-    <div className='fo-left'>
-        <h1 className='footer-logo'>JAMAL.</h1>
-        <p className='footer-des'>Scaling/zooming animations are problematic for accessibility, as they are a common</p>
-        <div className='media-container'>
-            <div className='media-icon  facebook' style={{backgrounColor:'#4267B2'}}>
-                <Facebook/>
-            </div>
-            <div className='media-icon gitub'>
-                <GitHub/>
-            </div>
-            <div className='media-icon instagram'>
-                <Instagram/>
-            </div>
-            <div className='media-icon twiter'>
-                <Twitter/>
-
-            </div>
-        </div>
-    </div>
+  
+    
     <div className='fo-center'>
         <h3 className='center-title'>USEFUL LINKS</h3>
         <ul className='ul'>
@@ -52,6 +35,25 @@ const Footer = () => {
           <EmailOutlined style={{marginRight:'10px',color:'lightgreen'}}/> jamalgamy@gmail.com
         </div>
         <img className='pay-img' src='https://www.nicepng.com/png/detail/395-3955693_paypal-payment-method-logo.png' alt='payment'/>
+    </div>
+    <div className='fo-left'>
+        <h1 className='footer-logo'>JAMAL.Dev</h1>
+        <p className='footer-des'>Scaling/zooming animations are problematic for accessibility, as they are a common</p>
+        <div className='media-container'>
+            <div className='media-icon  facebook' style={{backgrounColor:'#4267B2'}}>
+                <Facebook/>
+            </div>
+            <div className='media-icon gitub'>
+                <GitHub/>
+            </div>
+            <div className='media-icon instagram'>
+                <Instagram/>
+            </div>
+            <div className='media-icon twiter'>
+                <Twitter/>
+
+            </div>
+        </div>
     </div>
   </div>
   );

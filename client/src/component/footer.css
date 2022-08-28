@@ -101,3 +101,9 @@
   transform: scale(1.5);
   transition: all 0.5s ease;
 }
+@media only screen and (max-width: 500px) {
+  .fo-container{
+    flex-direction: column;
+  }
+  
+}

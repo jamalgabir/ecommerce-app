@@ -3,13 +3,13 @@ import { useState } from 'react';
 import React from 'react';
 import './Slider.css'
 import { sliderItem } from './Data';
+import { Link } from 'react-router-dom';
 
 const Slider = () => {
 
     const [slidIndex,setSlidIndex] = useState(0);
 
     const handleClick = (e) =>{
-        console.log("hello")
         if(e==='left'){
             setSlidIndex(slidIndex> 0 ? slidIndex-1:2)
 
@@ -32,9 +32,12 @@ const Slider = () => {
                 <img src={item.img} alt='img' className='img'/>
             </div>
             <div className='info-container'>
-              <h1 className='title'>{item.title}</h1>
+              <p className='title'>{item.title}</p>
               <p className='des'>{item.desc}</p>
-              <button className='btn'>SHOP NOW</button>
+              <Link to={`/products/${item.cat}`}>
+                <button className='btn'>SHOP NOW</button>
+              </Link>
+              
             </div>
            </div>
             ))

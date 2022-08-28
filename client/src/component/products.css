@@ -1,7 +1,5 @@
-.products-container {
-  padding: 20px;
+.products22{
   display: flex;
-
   flex-wrap: wrap;
-  justify-content: space-between;
+  margin: 5px;
 }

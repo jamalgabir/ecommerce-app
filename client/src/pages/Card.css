@@ -151,9 +151,9 @@
   box-shadow: 0px 0px 15px -10px rgba(0, 0, 0, 0.75);
   /* border: 1px solid gray; */
   width: 60vw;
-  min-width: 600px;
+  min-width: 350px;
   min-height: 220px;
-  height: 40vh;
+  
   justify-content: space-between;
 }
 .le-container * {
@@ -182,7 +182,43 @@
 .remove {
   cursor: pointer;
 }
+.pay1{
+  padding: 10px;
+  background-color: green;
+  color: white;
+  border-radius: 5px;
 
+}
+.pay1:hover{
+  transform: scale(1.2);
+  
+}
 .card-amount * {
   margin: 5px;
+}
+.ttt{
+  text-decoration: none;
+}
+@media only screen and (max-width: 500px) {
+  .mini-container{
+    flex-direction: column;
+  }
+  .le-container{
+    width: 350px;
+    
+    margin: 0px;
+  }
+  .car-img{
+    width: 100px;
+    height: 100px;
+  }
+  .size-amount{
+    flex-direction: column;
+  }
+  .ri-container{
+   min-width: 360px;
+   margin-top: 10px;
+   
+  }
+  
 }

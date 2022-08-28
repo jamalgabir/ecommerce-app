@@ -5,7 +5,9 @@ import { categories}  from './Data';
 import './categories.css'
 const Categories = () => {
   return (
-  <div className='categories-container'>
+    <div>
+      <hr/>
+      <div className='categories-container'>
         {
             categories.map((item)=>(
                 <CategoryItem key={item.id} item={item}/>
@@ -13,6 +15,9 @@ const Categories = () => {
         }
 
   </div>
+  <hr/>
+    </div>
+  
   );
 };
 

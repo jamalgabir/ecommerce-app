@@ -4,7 +4,6 @@ import Navbar from '../component/navbar';
 import NewsLetter from '../component/newsletter';
 import Footer from '../component/footer';
 import { useState } from 'react';
-import Announcement from '../component/announcement';
 import { Add, Remove } from '@material-ui/icons';
 import { useLocation } from 'react-router-dom';
 import { puplicReuest } from '../requestMethod';
@@ -31,7 +30,7 @@ const SinglProduct = () => {
 
     const getProduct = async () => {
       try {
-        const res = await puplicReuest.get(`/products/find/${id}`)
+        const res = await puplicReuest.get(`/products/${id}`)
         setProduct(res.data.product)
       }
       catch (error){
@@ -68,7 +67,7 @@ const SinglProduct = () => {
   return (
     <div className='single-container'>
       <Navbar />
-      <Announcement />
+      {/* <Announcement /> */}
       <div className='single-wrapper'>
         <div className='img-container'>
           <img src={product.img} alt='img' className='single-img' />
@@ -83,7 +82,7 @@ const SinglProduct = () => {
             <div className='color-container'>
               <h4 className='colo-titl'>Color</h4>
               <select onChange={(e)=>setColor(e.target.value)} className='op'>
-                <option selected disabled>color</option>
+                <option defaultValue={"color"}>color</option>
                 {product.color?.map((c) => (
                   <option key={c}>{c}</option>
                 ))}
@@ -93,7 +92,7 @@ const SinglProduct = () => {
             <div className='size-container'>
               <h4 className='colo-titl'>Size</h4>
               <select  onChange={(e)=>setSize(e.target.value)} className='op'>
-                <option selected disabled>size</option>
+                <option defaultValue={"size"}>size</option>
                 {product.size?.map((s) =>(
                   
                   <option key={s}>{s}</option>

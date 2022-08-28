@@ -3,6 +3,21 @@
   background-color: rgb(96, 134, 134);
 }
 
+  
+
+.favoriteTitle{
+  color: azure;
+  letter-spacing: 2px;
+  outline: none;
+  margin-left: 5px;
+ 
+}
+.logo-img{
+  width: 50px;
+  height: 50px;
+  border-radius: 2px;
+}
+
 .wrapper {
   padding: 10px;
   display: flex;
@@ -15,6 +30,7 @@
   align-items: center;
   justify-content: flex-end;
   margin-right: 10px;
+  
 }
 .left {
   flex: 1;
@@ -27,18 +43,31 @@
 }
 .p {
   font-size: 14px;
-  cursor: pointer;
+  
+}
+.search-icon{
+  color: rgb(245, 248, 245);
 }
 .searchContainer {
-  border: 0.5px solid gray;
   display: flex;
+ 
   align-items: center;
-  margin-left: 25px;
-  padding: 5px;
+  
+  
+}
+@media only screen and (max-width: 600px){
+  .input{
+    width: 50%;
+    
+    
+  }
 }
 
 .input {
-  border: none;
+  padding: 10px;
+  
+  border-radius: 10px;
+  outline: none;
 }
 
 .menuitem {

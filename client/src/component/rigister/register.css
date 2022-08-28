@@ -12,21 +12,25 @@
   align-items: center;
   justify-content: center;
 }
+* {
+  box-sizing: border-box;
+}
 
 .reg-wrapper {
-  width: 30%;
-  background: linear-gradient(rgba(136, 5, 141, 0.5), rgba(0, 246, 246, 0.5));
+  width: 40%;
+  background: rgb(225, 225, 225);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  min-width: 300px;
   border-radius: 10px;
 }
 
 .reg-title {
   font-size: 30px;
   font-weight: 700;
-  color: rgb(0, 69, 133);
+  text-align: center;
   margin-top: 10px;
 }
 .reg-form {

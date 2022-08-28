@@ -1,27 +1,23 @@
 import React from 'react';
 
-import { useState,useEffect } from 'react';
+import {useState,useEffect} from 'react';
 import Product from './product';
-import './products.css'
+import './products.css';
 import axios from 'axios';
 
 const Products = ({cat,filters,sorts}) => {
    const [product,setProduct]= useState([]);
-   const [filterProducts, setFilterProducts] = useState([]);
+   const [filterProducts, setFilterProducts]= useState([]);
 
    useEffect(() =>{
       const getProducts = async () =>{
          try{
-            const res = await axios.get(cat?`http://localhost:5000/api/products?category=${cat}`:
-            'http://localhost:5000/api/products');
+            const res = await axios.get(cat?`https://ecommirce-app.herokuapp.com/products?category=${cat}`:
+            'https://ecommirce-app.herokuapp.com/products');
             setProduct(res.data)
-            
-
-
          }catch(error){
             console.log(error)
          }
-
       };
       getProducts();
    },[cat]);
@@ -50,20 +46,18 @@ const Products = ({cat,filters,sorts}) => {
             [...prev].sort((a,b)=>b.price - a.price)
          );
       }
-       
    },[sorts])
    
-   
   return (
-  <div className='products-container'>
+  <section className='products22'>
      {
         cat? filterProducts.map((item) =>
-            <Product item={item} key={item.id}/>
-         ):product.slice(0,12).map((item) =>
-         <Product item={item} key={item.id}/>
+            <Product item={item} key={item._id}/>
+         ):product.slice(0,6).map((item) =>
+         <Product item={item} key={item._id}/>
         )
      }
-  </div>
+  </section>
   );
 };
 

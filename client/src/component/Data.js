@@ -1,25 +1,28 @@
 export const sliderItem = [
     {
         id:1,
-        img: "https://img.freepik.com/free-photo/shopping-woman-with-computer-tablet-online-shopping_46728-1711.jpg?size=626&ext=jpg&ga=GA1.2.1935095012.1639094400",
+        img: "https://ca1-atria-watford.dccdn.net/images/home/_765x740_crop_center-center_90_none/home-hero-2.png?v=1637232103",
         title: 'SUMMER SALE',
         desc: "DON'T COMPROMISE ON STYLE GET FLAT 30% OFF FOR NEW AVIVALS",
+        cat: "woman",
         bg: "f5fafd"
 
     },
     {
         id:2,
-        img: "https://img.freepik.com/free-photo/shopping-woman-with-computer-tablet-online-shopping_46728-1711.jpg?size=626&ext=jpg&ga=GA1.2.1935095012.1639094400",
+        img: "https://images.pexels.com/photos/7670142/pexels-photo-7670142.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         title: 'AUTHUMN SALE',
         desc: "DON'T COMPROMISE ON STYLE GET FLAT 30% OFF FOR NEW AVIVALS",
+        cat: "men",
         bg: "fcfafd"
 
     },
     {
         id:3,
-        img: "https://img.freepik.com/free-photo/shopping-woman-with-computer-tablet-online-shopping_46728-1711.jpg?size=626&ext=jpg&ga=GA1.2.1935095012.1639094400",
+        img: "https://images.pexels.com/photos/5325588/pexels-photo-5325588.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         title: 'WINNTER SALE',
         desc: "DON'T COMPROMISE ON STYLE GET FLAT 30% OFF FOR NEW AVIVALS",
+        cat: "kids",
         bg: "f5fafd"
 
     },

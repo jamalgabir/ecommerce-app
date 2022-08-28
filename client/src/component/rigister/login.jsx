@@ -20,21 +20,27 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Alert } from '@mui/material';
 import { userReuest } from '../../requestMethod';
-
-
+import { useNavigate } from 'react-router-dom';
+import Loader from './loader';
+import { useEffect } from 'react';
+import useAuth from "../useAuth";
 
 const Login = () => {
+  const {setAuth,auth} = useAuth();
   const[ m,setM ]= useState("");
+  const [dis, setDis] = useState(true)
   const [input, setInput] = useState({});
+  const [Loading,setLoading] = useState(false);
  // const {isFetching,currentUser} = useSelector((state)=>state.user);
   const dispatch = useDispatch()
-
+  const navigate = useNavigate();
+  // const animatiom = document.getElementsByClassName("ring")
   function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link color="inherit" href="">
-        Your Website
+      <Link color="inherit" href="#">
+        Jamal.Dev
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -42,25 +48,44 @@ const Login = () => {
   );
 }
   const handlechange = (e) =>{
-
+      
+    
     setInput(prev=>{
       return {...prev, [e.target.name]: e.target.value}
     })
+    
   }
 
   const theme = createTheme();
-
+  useEffect(()=>{
+    const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if(!input.email||!input.password||!input.email.match(mailformat)){
+      return setDis(true)
+    }
+    setDis(false)
+  },[input.email,input.password])
+  
   const handleClick = async (e) =>{
     e.preventDefault();
+    setM('')
     try{
-      if(!input.username||!input.password)
-      return setM("pleas enter username and password")
+      if(!input.email||!input.password)
+      return setM("Please enter email and password !")
+      setLoading(true)
       const user = await userReuest.post("/login",input)
+     const accessToken = user?.data?.accessToken;
+     const userData = user?.data;
+     const email = input.email;
+     const password = input.password;
+     await setAuth({email, password, accessToken, userData})
+     console.log(accessToken)
       login(dispatch,input)
-
+     setLoading(false)
+      navigate('/')
     }catch(error){
-      setM(error.response.data.message)
-      // console.log(error.response.data.message)
+      setLoading(false)
+      setM(error.response?.data?.message)
+      console.log(error)
 
     }
     
@@ -69,7 +94,7 @@ const Login = () => {
   }
   //console.log(input)
   return (
-
+    <div >
     <ThemeProvider theme={theme}>
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -95,7 +120,7 @@ const Login = () => {
             fullWidth
             id="email"
             label="Email Address"
-            name="username"
+            name="email"
             autoComplete="email"
             autoFocus
           />
@@ -114,18 +139,22 @@ const Login = () => {
             control={<Checkbox value="remember" color="primary" />}
             label="Remember me"
           />
+          <div className="ring">Loading <span className='span'> </span></div>
           {
             m&&<Alert severity="error">{m}</Alert>
 
           }
-          <Button
+          {Loading?<Loader/>:<Button
             type="submit"
+            disabled={dis}
             fullWidth
+            className='click'
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
           >
             Sign In
-          </Button>
+          </Button>}
+          
 
           <Grid container>
             <Grid item xs>
@@ -144,6 +173,8 @@ const Login = () => {
       <Copyright sx={{ mt: 8, mb: 4 }} />
     </Container>
   </ThemeProvider>
+  </div>
+
   // <div className='login-container'>
   //     <div className='login-wrapper'>
   //       <h1>Login</h1>

@@ -3,7 +3,10 @@ import React from 'react';
 import './newsletter.css'
 const Newsletter = () => {
   return (
-  <div className='new-container'>
+    <div>
+      <hr/>
+      <div className='new-container'>
+
      <h1 className='new-title'>NEWS LETTER</h1>
      <div className='new-des'>GET EVERY NEWS FAVORITE FIRST </div>
      <div className='input-container'>
@@ -12,6 +15,8 @@ const Newsletter = () => {
      </div>
      
   </div>
+    </div>
+  
   );
 };
 

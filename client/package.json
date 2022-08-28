@@ -13,6 +13,7 @@
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
+    "@wdio/cli": "^7.19.7",
     "animejs": "^3.2.1",
     "axios": "^0.25.0",
     "react": "^17.0.2",
@@ -48,5 +49,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@wdio/local-runner": "^7.19.7",
+    "@wdio/mocha-framework": "^7.19.7",
+    "@wdio/sauce-service": "^7.19.7",
+    "@wdio/spec-reporter": "^7.19.7",
+    "chromedriver": "^101.0.0",
+    "wdio-chromedriver-service": "^7.3.2",
+    "wdio-wait-for": "^2.2.6"
   }
 }

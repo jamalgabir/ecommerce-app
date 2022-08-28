@@ -9,7 +9,7 @@ import { useLocation } from 'react-router-dom';
 import { puplicReuest } from '../requestMethod';
 import { useDispatch } from 'react-redux';
 import { addProduct } from '../redux/cartRedux';
-//import {addToFavorit} from "../redux/favoritRedux";
+
 
 const SinglProduct = () => {
 
@@ -67,7 +67,7 @@ const SinglProduct = () => {
   return (
     <div className='single-container'>
       <Navbar />
-      {/* <Announcement /> */}
+      
       <div className='single-wrapper'>
         <div className='img-container'>
           <img src={product.img} alt='img' className='single-img' />

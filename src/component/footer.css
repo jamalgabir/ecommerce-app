@@ -78,6 +78,7 @@
 }
 .github {
   background-color: #171515;
+  
 }
 .twiter {
   background-color: #00acee;
@@ -88,8 +89,8 @@
 
 .media-icon {
   margin: 10px;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   color: white;
   cursor: pointer;

@@ -74,9 +74,9 @@ const SinglProduct = () => {
         </div>
         <div className='sin-info'>
           <h1 className='t'> {product.title}</h1>
-          <h2>Description</h2>
+          <h4>Description</h4>
           <p className='D'>{product.desc}</p>
-          <h2 className='P'>${product.price}</h2>
+          <p className='P'>${product.price}</p>
           <h2>{product.inStock}</h2>
           <div className='filter-item'>
             <div className='color-container'>

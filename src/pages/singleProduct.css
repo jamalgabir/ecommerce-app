@@ -22,15 +22,15 @@
   margin: 10px;
 }
 .t {
-  font-weight: 400;
+  font-weight: 300;
 }
 .D {
   font-size: 20px;
 }
 
 .P {
-  font-weight: 400;
-  font-size: 40px;
+  font-weight: 300;
+  font-size: 24px;
   color: green;
 }
 
@@ -88,6 +88,7 @@
 .add-btn {
   padding: 10px;
   background-color: teal;
+  color: white;
   /* border: solid 1px teal; */
   transition: 0.5s;
   font-size: 15px;
@@ -112,6 +113,9 @@
     margin: 0px;
     
   }
+  .add-container{
+    flex-direction: column;
+  }
   .single-wrapper{
     display: flex;
   flex-direction: column;
@@ -119,6 +123,10 @@
   }
   .img-container{
     margin: 0px;
+  }
+  .add-btn{
+    width: auto;
+    height: 60px;
   }
   .add-container{
     margin: 0px;

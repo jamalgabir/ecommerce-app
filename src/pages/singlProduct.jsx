@@ -30,7 +30,7 @@ const SinglProduct = () => {
 
     const getProduct = async () => {
       try {
-        const res = await puplicReuest.get(`/products/${id}`)
+        const res = await puplicReuest.get(`/products/find/${id}`)
         setProduct(res.data.product)
       }
       catch (error){

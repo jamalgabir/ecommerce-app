@@ -16,7 +16,7 @@ import  Favorite  from './component/Favorit';
  import { useSelector } from 'react-redux';
 import RequireAuth from './component/RequireAuth';
 const App = () => {
-    const user = useSelector((state)=>state.user.currentUser);
+    //const user = useSelector((state)=>state.user.currentUser);
   //const token = JSON.parse(JSON.parse(localStorage.getItem("persist:root"))?.user)?.currentUser?.accessToken;
 
   return (

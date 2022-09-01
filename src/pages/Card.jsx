@@ -43,7 +43,7 @@ useEffect(() => {
    useEffect(()=>{
       const makeRequest = async ()=>{
           try{
-              const res = await userReuest.post('/checkout/payment', {
+                await userReuest.post('/checkout/payment', {
                   tokenId:stripeToken.id,
                   amount:cart.totale*100,
                   
@@ -133,7 +133,7 @@ useEffect(() => {
                     image='https://assets.awwwards.com/awards/images/2012/12/best-logo-2013-3.jpg'
     billingAddress 
     shippingAddress
-    description={`Your totale Amount is ${cart.totale}`}
+    description={`Your totale Amount is $ ${cart.totale}`}
     amount={cart.totale*100}
     token={ontoken}
     

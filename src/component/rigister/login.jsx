@@ -19,7 +19,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Alert } from '@mui/material';
-import { userReuest } from '../../requestMethod';
+import { puplicReuest, userReuest } from '../../requestMethod';
 import { useNavigate } from 'react-router-dom';
 import Loader from './loader';
 import { useEffect } from 'react';
@@ -72,13 +72,13 @@ const Login = () => {
       if(!input.email||!input.password)
       return setM("Please enter email and password !")
       setLoading(true)
-      const user = await userReuest.post("/login",input)
-     const accessToken = user?.data?.accessToken;
-     const userData = user?.data;
-     const email = input.email;
-     const password = input.password;
-     await setAuth({email, password, accessToken, userData})
-     console.log(accessToken)
+      const user = await puplicReuest.post("/login",input)
+    //  const accessToken =await user?.data?.accessToken;
+    //  const userData =await user?.data;
+    //  const email =await input.email;
+    //  const password = input.password;
+     //await setAuth({email, password, accessToken, userData})
+     //console.log(accessToken)
       login(dispatch,input)
      setLoading(false)
       navigate('/')

@@ -1,0 +1,37 @@
+.success-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(155, 136, 136);
+  width: 100vw;
+  height: 100vh;
+}
+.success {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 50px;
+}
+.success * {
+  margin: 10px;
+}
+.img-suc {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+.suc-btn {
+  padding: 20px;
+  font-size: 24px;
+  border-radius: 10px;
+  font-weight: 500;
+  background-color: teal;
+  color: white;
+}
+.suc-desc {
+  color: white;
+  font-size: 24px;
+  font-weight: 200;
+  letter-spacing: 2px;
+}

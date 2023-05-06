@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const BASE_URL = "http://localhost:5000/api";
-const token =JSON.parse(JSON.parse(localStorage.getItem("persist:root"))?.user).currentUser?.accessToken||null;
+//const token =JSON.parse(JSON.parse(localStorage.getItem("persist:root"))?.user).currentUser?.accessToken||null;
 
 export const puplicReuest = axios.create({
     baseURL:BASE_URL,
@@ -11,7 +11,7 @@ export const puplicReuest = axios.create({
 export const userReuest = axios.create({
     baseURL:BASE_URL,
     
-    headers: {token:`Bearer ${token}`}
+    headers: {token:`Bearer ${'You can write token here'}`}
     
     
 });

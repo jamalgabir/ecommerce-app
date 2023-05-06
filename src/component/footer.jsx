@@ -25,14 +25,14 @@ const Footer = () => {
         <h3 className='right-title'>Contact</h3>
         <div className='contact-item'>
           <RoomOutlined style={{marginRight:'10px',color:'lightgreen'}}/>
-            Hroeh 18 Ramat Gan Tel Aviv 
+            123 king road london  
         </div>
         <div className='contact-item'>
           <PhoneOutlined style={{marginRight:'10px',color:'lightgreen'}}/>
-            +97254324990
+            +123456789
         </div>
         <div className='contact-item'>
-          <EmailOutlined style={{marginRight:'10px',color:'lightgreen'}}/> jamalgamy@gmail.com
+          <EmailOutlined style={{marginRight:'10px',color:'lightgreen'}}/> yourname@gmail.com
         </div>
         <img className='pay-img' src='https://www.nicepng.com/png/detail/395-3955693_paypal-payment-method-logo.png' alt='payment'/>
     </div>

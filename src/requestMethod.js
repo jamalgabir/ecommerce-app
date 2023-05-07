@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL = "https://apiecommerce.herokuapp.com/api";
+const BASE_URL = "https://apiecommerce.herokuapp.com";
 //const token =JSON.parse(JSON.parse(localStorage.getItem("persist:root"))?.user).currentUser?.accessToken||null;
 
 export const puplicReuest = axios.create({

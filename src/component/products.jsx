@@ -4,9 +4,9 @@ import {useState,useEffect} from 'react';
 import Product from './product';
 import './products.css';
 import { puplicReuest } from '../requestMethod';
-import Data from "./Data"
+
 const Products = ({cat,filters,sorts}) => {
-   const [product,setProduct]= useState([Data]);
+   const [product,setProduct]= useState([]);
    const [filterProducts, setFilterProducts]= useState([]);
    
 

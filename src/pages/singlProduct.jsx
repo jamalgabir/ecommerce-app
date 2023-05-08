@@ -1,18 +1,19 @@
 import React, { useEffect } from 'react';
 import './singleProduct.css'
 import Navbar from '../component/navbar';
-import NewsLetter from '../component/newsletter';
+//import NewsLetter from '../component/newsletter';
 import Footer from '../component/footer';
 import { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Add, Remove } from '@material-ui/icons';
 import { useLocation } from 'react-router-dom';
-import { puplicReuest, userReuest } from '../requestMethod';
+import {  userReuest } from '../requestMethod';
 import { useDispatch } from 'react-redux';
 import { addProduct } from '../redux/cartRedux';
 import { IconButton, Typography } from '@material-ui/core';
 import StarIcon from '@material-ui/icons/Star';
 import StarBorderIcon from '@material-ui/icons/StarBorder';
+//import { Alert } from '@mui/material';
 //import {addToFavorit} from "../redux/favoritRedux";
 
 const SinglProduct = () => {
@@ -127,8 +128,7 @@ const classes = useStyles();
         </div>
         <div className='sin-info'>
           <h1 className='t'> {product.title}</h1>
-          <h2>Description</h2>
-          <p className='D'>{product.desc}</p>
+          
           <h2 className='P'>${product.price}</h2>
           <h2>{product.inStock}</h2>
           <div className='filter-item'>
@@ -156,7 +156,7 @@ const classes = useStyles();
               
           </div>
           {message&&<p style={{color:"red"}}>{message}</p>}
-          {/* {message&&<Alert severity="error">{message}</Alert>} */}
+          
           <div className='add-container'>
             <div className='amount-container'>
               <Remove onClick={()=>handlequantity('dec')} className='plus' />
@@ -166,9 +166,12 @@ const classes = useStyles();
             <button onClick={handleClick}  className='add-btn'>Add to card</button>
 
           </div>
+          <h2>Description</h2>
+          <p className='D'>{product.desc}</p>
         </div>
 
       </div>
+      <div className='review'>
       <div>
         <h2 className={classes.writeTitle}>WRITE A REVIEW</h2>
         <div className={classes.root}>
@@ -183,6 +186,7 @@ const classes = useStyles();
       <div className={classes.submit}>
         <button className={classes.btn} type='submit'>SUBMIT</button>
 
+      </div>
       </div>
       <Footer />
 

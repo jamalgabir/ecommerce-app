@@ -14,7 +14,8 @@ const Products = ({cat,filters,sorts}) => {
       const getProducts = async () =>{
          try{
             
-            const res = await puplicReuest.get(`/products?category=${cat}`)
+            const res = cat? await puplicReuest.get(`/products?category=${cat}`):
+            await puplicReuest.get(`/products`);
             setProduct(res.data)
             
          }catch(error){
@@ -55,7 +56,7 @@ const Products = ({cat,filters,sorts}) => {
      {
         cat?filterProducts.map((item) =>
             <Product item={item} key={item._id}/>
-         ):product.slice(0,6).map((item) =>
+         ):product.map((item) =>
          <Product item={item} key={item._id}/>
         )
      }

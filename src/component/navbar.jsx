@@ -26,9 +26,9 @@ const Navbar = () => {
             <div className='favoriteTitle'>{<FavoriteBorder/>}</div>
             </Link>
               
-              {/* <Link to="/login">
-              <div className='menuitem'>SignIn</div>
-              </Link> */}
+              <Link to="/login">
+              <div className='menuitem'>Login</div>
+              </Link>
               
               <Link to="/cart">
               <div className='menuitem'>

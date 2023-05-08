@@ -54,7 +54,7 @@ const Product = ({item}) => {
   
 
   return (
-    <div>
+    <div >
       
       <div className='pro-container'>
       <div className="img-container">

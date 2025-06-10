@@ -1,0 +1,6 @@
+.products22{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 5px;
+}

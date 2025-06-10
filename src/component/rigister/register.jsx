@@ -59,7 +59,7 @@ export default function Register() {
   }
 
   useEffect(()=>{
-     const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+     const mailformat = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
     if(!data.firstName||!data.lastName|!data.password||!data.email||!data.email.match(mailformat)){
       return setDisable(true)
     }

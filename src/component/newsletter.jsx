@@ -1,4 +1,4 @@
-import { Send } from '@material-ui/icons';
+import { Send } from '@mui/icons-material';
 import React from 'react';
 import './newsletter.css'
 const Newsletter = () => {

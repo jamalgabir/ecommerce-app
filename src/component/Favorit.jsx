@@ -2,7 +2,7 @@ import React from 'react';
 import Navbar from './navbar';
 import "./favorit.css";
 import { useDispatch, useSelector } from 'react-redux';
-import { DeleteOutline } from '@material-ui/icons';
+import { DeleteOutline } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import  {deletFavorite} from '../redux/cartRedux';
 

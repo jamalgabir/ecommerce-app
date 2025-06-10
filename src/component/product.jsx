@@ -1,8 +1,8 @@
-import { FavoriteBorderOutlined } from '@material-ui/icons';
+import { FavoriteBorderOutlined } from '@mui/icons-material';
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './product.css';
-import StarIcon from '@material-ui/icons/Star';
+import StarIcon from '@mui/icons-material/Star';
 
 import { useDispatch,useSelector } from 'react-redux';
 //import addToFavorit from '../redux/favoritRedux';

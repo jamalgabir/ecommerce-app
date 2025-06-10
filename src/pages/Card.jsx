@@ -1,4 +1,4 @@
-import {  DeleteOutline } from '@material-ui/icons';
+import {  DeleteOutline } from '@mui/icons-material';
 import React, { useState } from 'react';
 import {  useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -43,7 +43,7 @@ useEffect(() => {
    useEffect(()=>{
       const makeRequest = async ()=>{
           try{
-              const res = await userReuest.post('/checkout/payment', {
+              await userReuest.post('/checkout/payment', {
                   tokenId:stripeToken.id,
                   amount:cart.totale*100,
                   

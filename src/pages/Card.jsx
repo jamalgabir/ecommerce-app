@@ -71,7 +71,7 @@ useEffect(() => {
               
               <div className='le-container'>
                   <div className='one'>
-                      <img className='car-img' src={product.img} alt='img'/>
+                      <img className='car-img\' src={product.img} alt='img'/>
                   </div>
                   
                   <div className='two'>

@@ -27,7 +27,7 @@ const Slider = () => {
        <div className='slider-wrapper' style={{transform: `translateX(${slidIndex*-100}vw)`}}>
         {
             sliderItem.map((item) =>(
-             <div className='slider' key={item.id} style={{backgroundColor: item.bg}}>
+             <div className='slider\' key={item.id} style={{backgroundColor: item.bg}}>
             <div className='img-container'>
                 <img src={item.img} alt='img' className='img'/>
             </div>

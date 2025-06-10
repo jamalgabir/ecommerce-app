@@ -5,7 +5,6 @@ import {
   Typography,
   Button,
   IconButton,
-  useTheme,
 } from '@mui/material';
 import { ArrowBackIos, ArrowForwardIos } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
@@ -42,7 +41,6 @@ const slides = [
 
 const HeroSection = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const theme = useTheme();
 
   useEffect(() => {
     const timer = setInterval(() => {

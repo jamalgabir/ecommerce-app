@@ -16,7 +16,7 @@ export const privateRequest = axios.create({
 privateRequest.interceptors.request.use(
   (config) => {
     const auth = JSON.parse(localStorage.getItem('auth') || '{}');
-    if (auth?.accessToken) {
+    if (auth && auth.accessToken) {
       config.headers.Authorization = `Bearer ${auth.accessToken}`;
     }
     return config;
@@ -30,7 +30,7 @@ privateRequest.interceptors.request.use(
 privateRequest.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response?.status === 401) {
+    if (error.response && error.response.status === 401) {
       localStorage.removeItem('auth');
       window.location.href = '/login';
     }

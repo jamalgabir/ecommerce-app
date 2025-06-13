@@ -8,11 +8,13 @@ import {
   IconButton,
   Box,
   Chip,
+  Rating,
+  Button,
 } from '@mui/material';
 import { Favorite, FavoriteBorder, ShoppingCart } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { addToFavorites, removeFromFavorites } from '../../store/slices/cartSlice';
+import { addToFavorites, removeFromFavorites, addProduct } from '../../store/slices/cartSlice';
 
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
@@ -30,6 +32,20 @@ const ProductCard = ({ product }) => {
     } else {
       dispatch(addToFavorites({ product }));
     }
+  };
+
+  const handleAddToCart = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    
+    const cartItem = {
+      ...product,
+      quantity: 1,
+      color: product.color[0],
+      size: product.size[0],
+    };
+    
+    dispatch(addProduct(cartItem));
   };
 
   const handleImageError = () => {
@@ -60,7 +76,7 @@ const ProductCard = ({ product }) => {
           }}
         >
           <img
-            src={imageError ? '/placeholder-image.jpg' : product.img}
+            src={imageError ? 'https://via.placeholder.com/250x250?text=No+Image' : product.img}
             alt={product.title}
             onError={handleImageError}
             style={{
@@ -91,7 +107,7 @@ const ProductCard = ({ product }) => {
         </IconButton>
       </Box>
 
-      <CardContent sx={{ flexGrow: 1 }}>
+      <CardContent sx={{ flexGrow: 1, pb: 1 }}>
         <Typography
           variant="h6"
           component={Link}
@@ -104,6 +120,7 @@ const ProductCard = ({ product }) => {
             WebkitBoxOrient: 'vertical',
             overflow: 'hidden',
             mb: 1,
+            fontSize: '1rem',
             '&:hover': {
               color: 'primary.main',
             },
@@ -112,7 +129,14 @@ const ProductCard = ({ product }) => {
           {product.title}
         </Typography>
         
-        <Typography variant="h5" color="primary" fontWeight="bold">
+        <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+          <Rating value={product.rating || 4.5} readOnly size="small" />
+          <Typography variant="body2" color="text.secondary" sx={{ ml: 1 }}>
+            ({product.reviews || 100})
+          </Typography>
+        </Box>
+        
+        <Typography variant="h5" color="primary" fontWeight="bold" sx={{ mb: 1 }}>
           ${product.price}
         </Typography>
         
@@ -121,19 +145,22 @@ const ProductCard = ({ product }) => {
             label="Out of Stock"
             color="error"
             size="small"
-            sx={{ mt: 1 }}
           />
         )}
       </CardContent>
 
-      <CardActions sx={{ justifyContent: 'space-between', px: 2, pb: 2 }}>
-        <IconButton
-          color="primary"
+      <CardActions sx={{ justifyContent: 'center', pb: 2 }}>
+        <Button
+          variant="contained"
+          startIcon={<ShoppingCart />}
+          onClick={handleAddToCart}
           disabled={product.inStock === false}
-          aria-label="add to cart"
+          size="small"
+          fullWidth
+          sx={{ mx: 2 }}
         >
-          <ShoppingCart />
-        </IconButton>
+          Add to Cart
+        </Button>
       </CardActions>
     </Card>
   );

@@ -15,23 +15,30 @@ const categories = [
   {
     id: 1,
     title: 'Men\'s Fashion',
-    image: 'https://images.pexels.com/photos/7670142/pexels-photo-7670142.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: 'https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=500',
     category: 'men',
     description: 'Discover the latest trends in men\'s clothing',
   },
   {
     id: 2,
     title: 'Women\'s Fashion',
-    image: 'https://images.pexels.com/photos/5325588/pexels-photo-5325588.jpeg?auto=compress&cs=tinysrgb&w=500',
+    image: 'https://images.pexels.com/photos/1536619/pexels-photo-1536619.jpeg?auto=compress&cs=tinysrgb&w=500',
     category: 'women',
     description: 'Elegant and stylish women\'s collection',
   },
   {
     id: 3,
-    title: 'Kids\' Fashion',
-    image: 'https://images.pexels.com/photos/5325588/pexels-photo-5325588.jpeg?auto=compress&cs=tinysrgb&w=500',
-    category: 'kids',
-    description: 'Comfortable and fun clothing for kids',
+    title: 'Accessories',
+    image: 'https://images.pexels.com/photos/1927259/pexels-photo-1927259.jpeg?auto=compress&cs=tinysrgb&w=500',
+    category: 'accessories',
+    description: 'Beautiful jewelry and accessories',
+  },
+  {
+    id: 4,
+    title: 'Electronics',
+    image: 'https://images.pexels.com/photos/356056/pexels-photo-356056.jpeg?auto=compress&cs=tinysrgb&w=500',
+    category: 'electronics',
+    description: 'Latest gadgets and electronics',
   },
 ];
 
@@ -50,7 +57,7 @@ const CategorySection = () => {
         
         <Grid container spacing={4}>
           {categories.map((category) => (
-            <Grid item key={category.id} xs={12} md={4}>
+            <Grid item key={category.id} xs={12} sm={6} md={3}>
               <Card
                 sx={{
                   height: '100%',
@@ -62,7 +69,7 @@ const CategorySection = () => {
               >
                 <CardMedia
                   component="img"
-                  height="300"
+                  height="250"
                   image={category.image}
                   alt={category.title}
                   sx={{ objectFit: 'cover' }}

@@ -9,8 +9,11 @@ import {
   Select,
   MenuItem,
   Chip,
+  Paper,
+  Breadcrumbs,
+  Link as MuiLink,
 } from '@mui/material';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import ProductCard from '../components/product/ProductCard';
@@ -27,8 +30,17 @@ const ProductList = () => {
   const [filters, setFilters] = useState({
     color: '',
     size: '',
+    priceRange: '',
   });
   const [sortBy, setSortBy] = useState('newest');
+
+  const categoryDisplayNames = {
+    men: "Men's Fashion",
+    women: "Women's Fashion",
+    kids: "Kids' Fashion",
+    accessories: "Accessories",
+    electronics: "Electronics"
+  };
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -62,6 +74,16 @@ const ProductList = () => {
         product.size?.includes(filters.size)
       );
     }
+    if (filters.priceRange) {
+      const [min, max] = filters.priceRange.split('-').map(Number);
+      filtered = filtered.filter((product) => {
+        if (max) {
+          return product.price >= min && product.price <= max;
+        } else {
+          return product.price >= min;
+        }
+      });
+    }
 
     // Apply sorting
     switch (sortBy) {
@@ -70,6 +92,9 @@ const ProductList = () => {
         break;
       case 'price-desc':
         filtered.sort((a, b) => b.price - a.price);
+        break;
+      case 'rating':
+        filtered.sort((a, b) => (b.rating || 0) - (a.rating || 0));
         break;
       case 'newest':
       default:
@@ -88,8 +113,10 @@ const ProductList = () => {
   };
 
   const clearFilters = () => {
-    setFilters({ color: '', size: '' });
+    setFilters({ color: '', size: '', priceRange: '' });
   };
+
+  const hasActiveFilters = Object.values(filters).some(filter => filter !== '');
 
   if (loading) return <LoadingSpinner />;
   if (error) return <ErrorMessage message={error} />;
@@ -99,18 +126,32 @@ const ProductList = () => {
       <Navbar />
       
       <Container maxWidth="lg" sx={{ py: 4, flexGrow: 1 }}>
+        {/* Breadcrumbs */}
+        <Breadcrumbs sx={{ mb: 3 }}>
+          <MuiLink component={Link} to="/" underline="hover" color="inherit">
+            Home
+          </MuiLink>
+          <Typography color="text.primary">
+            {category ? categoryDisplayNames[category] || category : 'All Products'}
+          </Typography>
+        </Breadcrumbs>
+
         <Typography
           variant="h3"
           component="h1"
           sx={{ mb: 4, textTransform: 'capitalize', fontWeight: 'bold' }}
         >
-          {category ? `${category}'s Fashion` : 'All Products'}
+          {category ? categoryDisplayNames[category] || `${category}'s Fashion` : 'All Products'}
         </Typography>
 
         {/* Filters and Sorting */}
-        <Box sx={{ mb: 4 }}>
+        <Paper sx={{ p: 3, mb: 4 }}>
+          <Typography variant="h6" sx={{ mb: 2 }}>
+            Filter & Sort
+          </Typography>
+          
           <Grid container spacing={2} alignItems="center">
-            <Grid item xs={12} sm={6} md={3}>
+            <Grid item xs={12} sm={6} md={2}>
               <FormControl fullWidth size="small">
                 <InputLabel>Color</InputLabel>
                 <Select
@@ -124,12 +165,11 @@ const ProductList = () => {
                   <MenuItem value="red">Red</MenuItem>
                   <MenuItem value="blue">Blue</MenuItem>
                   <MenuItem value="green">Green</MenuItem>
-                  <MenuItem value="yellow">Yellow</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
 
-            <Grid item xs={12} sm={6} md={3}>
+            <Grid item xs={12} sm={6} md={2}>
               <FormControl fullWidth size="small">
                 <InputLabel>Size</InputLabel>
                 <Select
@@ -147,7 +187,25 @@ const ProductList = () => {
               </FormControl>
             </Grid>
 
-            <Grid item xs={12} sm={6} md={3}>
+            <Grid item xs={12} sm={6} md={2}>
+              <FormControl fullWidth size="small">
+                <InputLabel>Price Range</InputLabel>
+                <Select
+                  value={filters.priceRange}
+                  label="Price Range"
+                  onChange={(e) => handleFilterChange('priceRange', e.target.value)}
+                >
+                  <MenuItem value="">All Prices</MenuItem>
+                  <MenuItem value="0-25">$0 - $25</MenuItem>
+                  <MenuItem value="25-50">$25 - $50</MenuItem>
+                  <MenuItem value="50-100">$50 - $100</MenuItem>
+                  <MenuItem value="100-200">$100 - $200</MenuItem>
+                  <MenuItem value="200">$200+</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={2}>
               <FormControl fullWidth size="small">
                 <InputLabel>Sort By</InputLabel>
                 <Select
@@ -158,12 +216,13 @@ const ProductList = () => {
                   <MenuItem value="newest">Newest</MenuItem>
                   <MenuItem value="price-asc">Price: Low to High</MenuItem>
                   <MenuItem value="price-desc">Price: High to Low</MenuItem>
+                  <MenuItem value="rating">Highest Rated</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
 
-            <Grid item xs={12} sm={6} md={3}>
-              {(filters.color || filters.size) && (
+            <Grid item xs={12} sm={6} md={2}>
+              {hasActiveFilters && (
                 <Chip
                   label="Clear Filters"
                   onClick={clearFilters}
@@ -173,8 +232,14 @@ const ProductList = () => {
                 />
               )}
             </Grid>
+
+            <Grid item xs={12} sm={6} md={2}>
+              <Typography variant="body2" color="text.secondary">
+                {filteredProducts.length} products found
+              </Typography>
+            </Grid>
           </Grid>
-        </Box>
+        </Paper>
 
         {/* Products Grid */}
         {filteredProducts.length > 0 ? (
@@ -187,8 +252,11 @@ const ProductList = () => {
           </Grid>
         ) : (
           <Box sx={{ textAlign: 'center', py: 8 }}>
-            <Typography variant="h5" color="text.secondary">
-              No products found matching your criteria
+            <Typography variant="h5" color="text.secondary" sx={{ mb: 2 }}>
+              No products found
+            </Typography>
+            <Typography variant="body1" color="text.secondary">
+              Try adjusting your filters or browse all products
             </Typography>
           </Box>
         )}

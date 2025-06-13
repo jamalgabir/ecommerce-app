@@ -13,9 +13,13 @@ import {
   Rating,
   Chip,
   Alert,
+  Paper,
+  Breadcrumbs,
+  Link as MuiLink,
+  Divider,
 } from '@mui/material';
-import { Add, Remove, ShoppingCart, Favorite, FavoriteBorder } from '@mui/icons-material';
-import { useParams, useNavigate } from 'react-router-dom';
+import { Add, Remove, ShoppingCart, Favorite, FavoriteBorder, LocalShipping, Security, Refresh } from '@mui/icons-material';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
@@ -107,6 +111,19 @@ const SingleProduct = () => {
       <Navbar />
       
       <Container maxWidth="lg" sx={{ py: 4, flexGrow: 1 }}>
+        {/* Breadcrumbs */}
+        <Breadcrumbs sx={{ mb: 3 }}>
+          <MuiLink component={Link} to="/" underline="hover" color="inherit">
+            Home
+          </MuiLink>
+          <MuiLink component={Link} to={`/products/${product.category}`} underline="hover" color="inherit">
+            {product.category}
+          </MuiLink>
+          <Typography color="text.primary">
+            {product.title}
+          </Typography>
+        </Breadcrumbs>
+
         {addedToCart && (
           <Alert severity="success" sx={{ mb: 2 }}>
             Product added to cart successfully!
@@ -116,46 +133,49 @@ const SingleProduct = () => {
         <Grid container spacing={4}>
           {/* Product Image */}
           <Grid item xs={12} md={6}>
-            <Box
-              component="img"
-              src={product.img}
-              alt={product.title}
-              sx={{
-                width: '100%',
-                height: 'auto',
-                maxHeight: '600px',
-                objectFit: 'cover',
-                borderRadius: 2,
-                boxShadow: 2,
-              }}
-            />
+            <Paper sx={{ p: 2, textAlign: 'center' }}>
+              <Box
+                component="img"
+                src={product.img}
+                alt={product.title}
+                sx={{
+                  width: '100%',
+                  height: 'auto',
+                  maxHeight: '600px',
+                  objectFit: 'contain',
+                  borderRadius: 2,
+                }}
+              />
+            </Paper>
           </Grid>
 
           {/* Product Details */}
           <Grid item xs={12} md={6}>
-            <Box sx={{ pl: { md: 4 } }}>
+            <Box sx={{ pl: { md: 2 } }}>
               <Typography variant="h3" component="h1" sx={{ mb: 2, fontWeight: 'bold' }}>
                 {product.title}
               </Typography>
 
+              <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
+                <Rating value={product.rating || 4.5} readOnly precision={0.5} />
+                <Typography variant="body2" sx={{ ml: 1 }}>
+                  ({product.rating || 4.5}/5) {product.reviews || 100} reviews
+                </Typography>
+              </Box>
+
               <Typography variant="h4" color="primary" sx={{ mb: 2, fontWeight: 'bold' }}>
                 ${product.price}
               </Typography>
-
-              <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-                <Rating value={4.5} readOnly precision={0.5} />
-                <Typography variant="body2" sx={{ ml: 1 }}>
-                  (4.5/5) 123 reviews
-                </Typography>
-              </Box>
 
               {product.inStock === false && (
                 <Chip label="Out of Stock" color="error" sx={{ mb: 2 }} />
               )}
 
               <Typography variant="body1" sx={{ mb: 4, lineHeight: 1.6 }}>
-                {product.desc || 'High-quality product with excellent craftsmanship and attention to detail.'}
+                {product.desc}
               </Typography>
+
+              <Divider sx={{ my: 3 }} />
 
               {/* Color Selection */}
               {product.color && product.color.length > 0 && (
@@ -168,7 +188,9 @@ const SingleProduct = () => {
                   >
                     {product.color.map((color) => (
                       <MenuItem key={color} value={color}>
-                        {color}
+                        <Box sx={{ display: 'flex', alignItems: 'center', textTransform: 'capitalize' }}>
+                          {color}
+                        </Box>
                       </MenuItem>
                     ))}
                   </Select>
@@ -196,7 +218,7 @@ const SingleProduct = () => {
               {/* Quantity and Add to Cart */}
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
                 <Box sx={{ display: 'flex', alignItems: 'center', border: 1, borderColor: 'grey.300', borderRadius: 1 }}>
-                  <IconButton onClick={() => handleQuantityChange('decrement')}>
+                  <IconButton onClick={() => handleQuantityChange('decrement')} disabled={quantity <= 1}>
                     <Remove />
                   </IconButton>
                   <Typography sx={{ px: 2, minWidth: '40px', textAlign: 'center' }}>
@@ -222,6 +244,7 @@ const SingleProduct = () => {
                   onClick={handleFavoriteToggle}
                   color={isFavorite ? 'error' : 'default'}
                   size="large"
+                  sx={{ border: 1, borderColor: 'grey.300' }}
                 >
                   {isFavorite ? <Favorite /> : <FavoriteBorder />}
                 </IconButton>
@@ -233,21 +256,28 @@ const SingleProduct = () => {
                 </Typography>
               )}
 
+              <Divider sx={{ my: 3 }} />
+
               {/* Additional Info */}
-              <Box sx={{ mt: 4 }}>
+              <Paper sx={{ p: 3, backgroundColor: 'grey.50' }}>
                 <Typography variant="h6" sx={{ mb: 2 }}>
-                  Product Details
+                  Product Benefits
                 </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  • Free shipping on orders over $50
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  • 30-day return policy
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  • Secure payment processing
-                </Typography>
-              </Box>
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <LocalShipping sx={{ mr: 1, color: 'primary.main' }} />
+                    <Typography variant="body2">Free shipping on orders over $50</Typography>
+                  </Box>
+                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <Refresh sx={{ mr: 1, color: 'primary.main' }} />
+                    <Typography variant="body2">30-day return policy</Typography>
+                  </Box>
+                  <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                    <Security sx={{ mr: 1, color: 'primary.main' }} />
+                    <Typography variant="body2">Secure payment processing</Typography>
+                  </Box>
+                </Box>
+              </Paper>
             </Box>
           </Grid>
         </Grid>

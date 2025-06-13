@@ -7,17 +7,38 @@ const transformProduct = (product) => ({
   price: product.price,
   img: product.image,
   desc: product.description,
-  category: product.category,
-  color: ['black', 'white', 'red'], // Mock colors
-  size: ['S', 'M', 'L', 'XL'], // Mock sizes
+  category: product.category === "men's clothing" ? 'men' : 
+           product.category === "women's clothing" ? 'women' : 
+           product.category === 'jewelery' ? 'accessories' : 'electronics',
+  color: ['black', 'white', 'red', 'blue', 'green'], // Mock colors
+  size: ['S', 'M', 'L', 'XL', 'XXL'], // Mock sizes
   inStock: true,
   createdAt: new Date().toISOString(),
+  rating: product.rating?.rate || 4.5,
+  reviews: product.rating?.count || 100,
 });
 
 export const productService = {
   getProducts: async (category = null) => {
     try {
-      const url = category ? `/products/category/${category}` : '/products';
+      let url = '/products';
+      
+      // Map category names to FakeStore API categories
+      if (category) {
+        const categoryMap = {
+          'men': "men's clothing",
+          'women': "women's clothing", 
+          'kids': "women's clothing", // Use women's clothing for kids as fallback
+          'accessories': 'jewelery',
+          'electronics': 'electronics'
+        };
+        
+        const apiCategory = categoryMap[category];
+        if (apiCategory) {
+          url = `/products/category/${encodeURIComponent(apiCategory)}`;
+        }
+      }
+      
       const response = await puplicReuest.get(url);
       return response.data.map(transformProduct);
     } catch (error) {
@@ -37,4 +58,18 @@ export const productService = {
       throw error;
     }
   },
+
+  getCategories: async () => {
+    try {
+      const response = await puplicReuest.get('/products/categories');
+      return response.data.map(cat => ({
+        id: cat,
+        name: cat,
+        displayName: cat.charAt(0).toUpperCase() + cat.slice(1)
+      }));
+    } catch (error) {
+      console.error('Error fetching categories:', error);
+      return [];
+    }
+  }
 };

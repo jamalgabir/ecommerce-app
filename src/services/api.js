@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = "http://localhost:5000";
+const BASE_URL = "http://localhost:5000/api";
 
 // Public API instance
 export const publicRequest = axios.create({

@@ -1,8 +1,7 @@
-
 import StripeCheckout from 'react-stripe-checkout';
 import {useState,useEffect} from 'react';
 import './pay.css'
-import axios from 'axios';
+import {userRequest} from '../requestMethod';
 import {useNavigate} from 'react-router-dom'
 const key = 'pk_test_51KPXSjLh7941OZ3JMzKPvhjbWRXsEtbM3ChIBqIgjvqy7fuf2B3fDLbmGFwU2CQie9dBup9TbivCmhPSx78xz1H200nTwb3C3T';
 
@@ -19,8 +18,8 @@ const Pay = () => {
   //console.log(stripeToken)
   const makeRequest = async () =>{
     try{
-      const res = await axios.post(
-        'http://localhost:5000/api/checkout/payment',
+      const res = await userRequest.post(
+        '/api/checkout/payment',
         {
          tokenId:stripeToken.id,
          amount:2000,
@@ -35,7 +34,7 @@ const Pay = () => {
       console.log(err)
     }
   };
-  if(stripeToken) return makeRequest;
+  if(stripeToken) makeRequest();
 },[stripeToken,navigate]);
 
   return (

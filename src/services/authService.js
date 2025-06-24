@@ -1,13 +1,13 @@
-import { puplicReuest } from '../requestMethod';
+import { publicRequest } from '../services/api';
 
 export const authService = {
   login: async (credentials) => {
-    const response = await puplicReuest.post('/login', credentials);
+    const response = await publicRequest.post('/login', credentials);
     return response.data;
   },
 
   register: async (userData) => {
-    const response = await puplicReuest.post('/register', userData);
+    const response = await publicRequest.post('/register', userData);
     return response.data;
   },
 

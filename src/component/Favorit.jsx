@@ -9,7 +9,7 @@ import  {deletFavorite} from '../redux/cartRedux';
 const Favorit = () => {
 
     const dispatch = useDispatch();
-    const items = useSelector(state=>state.cart.Favorite)
+    const items = useSelector(state=>state.cart.favorites)
     const handleClick = (id) =>{
       
       dispatch(deletFavorite(id))

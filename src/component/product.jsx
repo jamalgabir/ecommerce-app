@@ -15,7 +15,7 @@ const Product = ({item}) => {
   //const [message,setMessage] =useState('');
   const [product,setProduct] = useState({});
   const dispatch = useDispatch();
-  const favorit = useSelector(state=> state.cart.Favorite);
+  const favorit = useSelector(state=> state.cart.favorites);
   const ID = favorit.filter((ite) =>ite.product?._id)
   const colorcheck = ID.filter((i)=>i.product._id===item._id)
   

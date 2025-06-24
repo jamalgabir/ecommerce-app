@@ -75,7 +75,7 @@ useEffect(() => {
                   </div>
                   
                   <div className='two'>
-                      <Link className='ttt' to={`/products/find/${product._id}`}>
+                      <Link className='ttt' to={`/product/${product._id}`}>
                       <div>
                           <h4>{product.title}</h4>
                           

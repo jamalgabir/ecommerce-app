@@ -31,7 +31,7 @@ const Favorit = () => {
                     <img className='car-img' src={item.product?.img} alt='img'/>
                 </div>
                 <div className='oneOne'>
-                    <Link className='ttt' to={`/products/find/${item.product._id}`}>
+                    <Link className='ttt' to={`/product/${item.product._id}`}>
                     <div>
                         <p>{item.product.title}</p>
                     </div>

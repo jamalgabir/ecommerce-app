@@ -58,7 +58,7 @@ const Product = ({item}) => {
       
       <div className='pro-container'>
       <div className="img-container">
-        <Link to={`/products/find/${item._id}`}>
+        <Link to={`/product/${item._id}`}>
           <img className='pro-img' src={item.img} alt='img'/>
         </Link>
         <div onClick={() =>handleClick(item._id)} className='icon'>

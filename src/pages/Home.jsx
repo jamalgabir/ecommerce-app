@@ -1,24 +1,24 @@
 import React from 'react';
-import Navbar from '../component/navbar';
-
-///import Announcement from '../component/announcement';
-import Slider from '../component/Slider';
-import Categories from '../component/categories';
-import Products from '../component/products';
-import Newsletter from '../component/newsletter';
-import Footer from '../component/footer';
+import { Box } from '@mui/material';
+import Navbar from '../components/layout/Navbar';
+import Footer from '../components/layout/Footer';
+import HeroSection from '../components/home/HeroSection';
+import CategorySection from '../components/home/CategorySection';
+import FeaturedProducts from '../components/home/FeaturedProducts';
+import Newsletter from '../components/home/Newsletter';
 
 const Home = () => {
-  
   return (
-    <div>
-      <Navbar/>
-      <Slider/>
-      <Categories/>
-      <Products/>
-      <Newsletter/>
-      <Footer/>
-    </div>
+    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
+      <Navbar />
+      <Box component="main" sx={{ flexGrow: 1 }}>
+        <HeroSection />
+        <CategorySection />
+        <FeaturedProducts />
+        <Newsletter />
+      </Box>
+      <Footer />
+    </Box>
   );
 };
 

@@ -1,40 +1,33 @@
 .fo-container {
   display: flex;
-  padding: 10px;
+  padding: 40px 20px;
   justify-content: space-between;
   background-color: rgb(61, 60, 60);
+  gap: 30px;
+  flex-wrap: wrap;
 }
 
 .footer-logo {
   color: white;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 15px;
 }
+
 .footer-des {
   margin: 20px 0px;
-  font-size: 20px;
+  font-size: 16px;
   color: white;
-  font-weight: 100;
-  word-spacing: 3px;
-  letter-spacing: 2px;
+  font-weight: 300;
+  line-height: 1.6;
+  letter-spacing: 1px;
 }
 
 .fo-right {
   flex: 1;
   padding: 20px;
   color: white;
-}
-.contact-item {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-  margin-top: 10px;
-}
-.pay-img {
-  width: 200px;
-  height: 70px;
-  margin-top: 10px;
-  object-fit: cover;
-  border-radius: 10px;
+  min-width: 250px;
 }
 
 .fo-left {
@@ -42,16 +35,50 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
+  min-width: 250px;
 }
-/*-----------*/
+
 .fo-center {
   flex: 1;
   padding: 20px;
+  min-width: 200px;
 }
+
 .center-title {
   margin-bottom: 30px;
   color: white;
+  font-size: 18px;
+  font-weight: 600;
 }
+
+.right-title {
+  margin-bottom: 20px;
+  color: white;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.contact-item {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.contact-item:hover {
+  color: lightgreen;
+}
+
+.pay-img {
+  width: 200px;
+  height: 70px;
+  margin-top: 20px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
 .ul {
   margin: 0;
   padding: 0;
@@ -63,31 +90,41 @@
 
 .li {
   width: 50%;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
   cursor: pointer;
+  padding: 5px 0;
+  transition: all 0.3s ease;
+  font-size: 14px;
 }
+
 .li:hover {
-  transform: scale(1.1);
+  color: lightgreen;
+  transform: translateX(5px);
 }
 
 .media-container {
   display: flex;
+  gap: 10px;
+  margin-top: 20px;
 }
+
 .facebook {
   background-color: #4267b2;
 }
+
 .github {
   background-color: #171515;
 }
+
 .twiter {
   background-color: #00acee;
 }
+
 .instagram {
   background-color: #bc2a8d;
 }
 
 .media-icon {
-  margin: 10px;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -96,14 +133,127 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.3s ease;
 }
+
 .media-icon:hover {
-  transform: scale(1.5);
-  transition: all 0.5s ease;
+  transform: scale(1.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
-@media only screen and (max-width: 500px) {
-  .fo-container{
-    flex-direction: column;
+
+/* Tablet Styles */
+@media only screen and (max-width: 1024px) {
+  .fo-container {
+    padding: 30px 15px;
+    gap: 20px;
   }
   
+  .fo-left,
+  .fo-right,
+  .fo-center {
+    min-width: 200px;
+    padding: 15px;
+  }
+  
+  .footer-des {
+    font-size: 15px;
+  }
+  
+  .pay-img {
+    width: 180px;
+    height: 60px;
+  }
+}
+
+/* Mobile Styles */
+@media only screen and (max-width: 768px) {
+  .fo-container {
+    flex-direction: column;
+    padding: 20px 10px;
+    gap: 30px;
+  }
+  
+  .fo-left,
+  .fo-right,
+  .fo-center {
+    min-width: auto;
+    padding: 0;
+    text-align: center;
+  }
+  
+  .footer-logo {
+    font-size: 22px;
+  }
+  
+  .footer-des {
+    font-size: 14px;
+    margin: 15px 0;
+  }
+  
+  .ul {
+    justify-content: center;
+  }
+  
+  .li {
+    width: auto;
+    margin: 5px 15px;
+  }
+  
+  .media-container {
+    justify-content: center;
+    margin-top: 15px;
+  }
+  
+  .contact-item {
+    justify-content: center;
+    margin-bottom: 12px;
+  }
+  
+  .pay-img {
+    width: 160px;
+    height: 50px;
+    margin-top: 15px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .fo-container {
+    padding: 15px 5px;
+    gap: 25px;
+  }
+  
+  .footer-logo {
+    font-size: 20px;
+  }
+  
+  .footer-des {
+    font-size: 13px;
+    margin: 12px 0;
+  }
+  
+  .center-title,
+  .right-title {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  
+  .li {
+    font-size: 13px;
+    margin: 3px 10px;
+  }
+  
+  .media-icon {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .contact-item {
+    font-size: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .pay-img {
+    width: 140px;
+    height: 45px;
+  }
 }

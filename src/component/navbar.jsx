@@ -1,5 +1,5 @@
-import { Badge } from '@material-ui/core';
-import { FavoriteBorder, Search, ShoppingCartOutlined } from '@material-ui/icons';
+import { Badge } from '@mui/material';
+import { FavoriteBorder, Search, ShoppingCartOutlined } from '@mui/icons-material';
 import React from 'react';
 import logo from '../Images/logo.jpg';
 import './navbar.css'

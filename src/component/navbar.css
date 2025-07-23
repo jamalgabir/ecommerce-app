@@ -1,17 +1,18 @@
 .navbar-Container {
   height: 60px;
   background-color: rgb(96, 134, 134);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
-
-  
 
 .favoriteTitle{
   color: azure;
   letter-spacing: 2px;
   outline: none;
   margin-left: 5px;
- 
 }
+
 .logo-img{
   width: 50px;
   height: 50px;
@@ -22,7 +23,10 @@
   padding: 10px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }
+
 .right {
   flex: 1;
   text-align: center;
@@ -30,48 +34,115 @@
   align-items: center;
   justify-content: flex-end;
   margin-right: 10px;
-  
+  gap: 10px;
 }
+
 .left {
   flex: 1;
   display: flex;
   align-items: center;
 }
+
 .center {
   flex: 1;
   text-align: center;
 }
+
 .p {
   font-size: 14px;
-  
 }
+
 .search-icon{
   color: rgb(245, 248, 245);
 }
+
 .searchContainer {
   display: flex;
- 
   align-items: center;
-  
-  
-}
-@media only screen and (max-width: 600px){
-  .input{
-    width: 50%;
-    
-    
-  }
+  flex: 2;
+  justify-content: center;
+  max-width: 400px;
 }
 
 .input {
   padding: 10px;
-  
   border-radius: 10px;
   outline: none;
+  border: 1px solid #ccc;
+  width: 100%;
+  max-width: 300px;
 }
 
 .menuitem {
   font-size: 14px;
   cursor: pointer;
-  margin-left: 25px;
+  margin-left: 15px;
+  color: white;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Mobile Styles */
+@media only screen and (max-width: 768px) {
+  .navbar-Container {
+    height: auto;
+    min-height: 60px;
+  }
+  
+  .wrapper {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px 5px;
+  }
+  
+  .left {
+    order: 1;
+    justify-content: center;
+    flex: none;
+  }
+  
+  .searchContainer {
+    order: 2;
+    width: 100%;
+    max-width: none;
+    flex: none;
+  }
+  
+  .input {
+    width: 100%;
+    max-width: none;
+  }
+  
+  .right {
+    order: 3;
+    justify-content: center;
+    flex: none;
+    margin-right: 0;
+  }
+  
+  .menuitem {
+    margin-left: 10px;
+    font-size: 12px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .logo-img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .input {
+    padding: 8px;
+    font-size: 14px;
+  }
+  
+  .menuitem {
+    margin-left: 8px;
+    font-size: 11px;
+  }
+  
+  .right {
+    gap: 5px;
+  }
 }

@@ -1,8 +1,8 @@
-import { FavoriteBorderOutlined } from '@material-ui/icons';
+import { FavoriteBorderOutlined } from '@mui/icons-material';
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './product.css';
-import StarIcon from '@material-ui/icons/Star';
+import StarIcon from '@mui/icons-material/Star';
 
 import { useDispatch,useSelector } from 'react-redux';
 //import addToFavorit from '../redux/favoritRedux';
@@ -15,7 +15,7 @@ const Product = ({item}) => {
   //const [message,setMessage] =useState('');
   const [product,setProduct] = useState({});
   const dispatch = useDispatch();
-  const favorit = useSelector(state=> state.cart.Favorite);
+  const favorit = useSelector(state=> state.cart.favorites);
   const ID = favorit.filter((ite) =>ite.product?._id)
   const colorcheck = ID.filter((i)=>i.product._id===item._id)
   
@@ -58,7 +58,7 @@ const Product = ({item}) => {
       
       <div className='pro-container'>
       <div className="img-container">
-        <Link to={`/products/find/${item._id}`}>
+        <Link to={`/product/${item._id}`}>
           <img className='pro-img' src={item.img} alt='img'/>
         </Link>
         <div onClick={() =>handleClick(item._id)} className='icon'>

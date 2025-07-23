@@ -2,14 +2,14 @@ import React from 'react';
 import Navbar from './navbar';
 import "./favorit.css";
 import { useDispatch, useSelector } from 'react-redux';
-import { DeleteOutline } from '@material-ui/icons';
+import { DeleteOutline } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import  {deletFavorite} from '../redux/cartRedux';
 
 const Favorit = () => {
 
     const dispatch = useDispatch();
-    const items = useSelector(state=>state.cart.Favorite)
+    const items = useSelector(state=>state.cart.favorites)
     const handleClick = (id) =>{
       
       dispatch(deletFavorite(id))
@@ -31,7 +31,7 @@ const Favorit = () => {
                     <img className='car-img' src={item.product?.img} alt='img'/>
                 </div>
                 <div className='oneOne'>
-                    <Link className='ttt' to={`/products/find/${item.product._id}`}>
+                    <Link className='ttt' to={`/product/${item.product._id}`}>
                     <div>
                         <p>{item.product.title}</p>
                     </div>

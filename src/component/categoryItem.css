@@ -3,13 +3,24 @@
   height: 100%;
   border-radius: 10px;
   object-fit: cover;
+  transition: transform 0.3s ease;
 }
+
 .catego-container {
   flex: 1;
   margin: 3px;
   height: 70vh;
   position: relative;
+  min-height: 400px;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+.catego-container:hover .catego-img {
+  transform: scale(1.05);
+}
+
 .catego-info {
   position: absolute;
   top: 0;
@@ -20,21 +31,100 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
+
+.catego-container:hover .catego-info {
+  opacity: 1;
+}
+
 .catego-title {
   color: rgb(255, 255, 255);
   margin-bottom: 20px;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
+
 .catego-btn {
   border: none;
-  padding: 20px;
+  padding: 15px 30px;
   font-weight: 600;
   cursor: pointer;
   border-radius: 10px;
   background-color: white;
-  color: gray;
+  color: #333;
+  font-size: 16px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
+
 .catego-btn:hover {
   background-color: rgb(114, 155, 91);
   color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Tablet Styles */
+@media only screen and (max-width: 1024px) {
+  .catego-container {
+    height: 60vh;
+    min-height: 350px;
+  }
+  
+  .catego-title {
+    font-size: 22px;
+    margin-bottom: 15px;
+  }
+  
+  .catego-btn {
+    padding: 12px 25px;
+    font-size: 15px;
+  }
+}
+
+/* Mobile Styles */
+@media only screen and (max-width: 768px) {
+  .catego-container {
+    height: 50vh;
+    min-height: 300px;
+    margin: 0;
+  }
+  
+  .catego-info {
+    opacity: 1;
+    background: rgba(0, 0, 0, 0.4);
+  }
+  
+  .catego-title {
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+  
+  .catego-btn {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .catego-container {
+    height: 40vh;
+    min-height: 250px;
+  }
+  
+  .catego-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .catego-btn {
+    padding: 10px 15px;
+    font-size: 13px;
+  }
 }

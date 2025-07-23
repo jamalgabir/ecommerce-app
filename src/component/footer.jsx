@@ -1,4 +1,4 @@
-import { EmailOutlined, Facebook, GitHub, Instagram, PhoneOutlined, RoomOutlined, Twitter } from '@material-ui/icons';
+import { EmailOutlined, Facebook, GitHub, Instagram, PhoneOutlined, RoomOutlined, Twitter } from '@mui/icons-material';
 import React from 'react';
 
 import './footer.css'

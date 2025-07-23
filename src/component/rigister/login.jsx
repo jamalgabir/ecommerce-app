@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-import {useDispatch, useSelector} from 'react-redux'
+import {useDispatch} from 'react-redux'
 //import { Link } from 'react-router-dom';
 import { login } from '../../redux/apiCalls';
 import './login.css';
@@ -26,7 +26,7 @@ import { useEffect } from 'react';
 import useAuth from "../useAuth";
 
 const Login = () => {
-  const {setAuth,auth} = useAuth();
+  const {setAuth} = useAuth();
   const[ m,setM ]= useState("");
   const [dis, setDis] = useState(true)
   const [input, setInput] = useState({});
@@ -58,7 +58,7 @@ const Login = () => {
 
   const theme = createTheme();
   useEffect(()=>{
-    const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    const mailformat = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
     if(!input.email||!input.password||!input.email.match(mailformat)){
       return setDis(true)
     }
@@ -136,7 +136,7 @@ const Login = () => {
             autoComplete="current-password"
           />
           <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
+            control={<Checkbox value="remember\" color="primary" />}
             label="Remember me"
           />
           <div className="ring">Loading <span className='span'> </span></div>

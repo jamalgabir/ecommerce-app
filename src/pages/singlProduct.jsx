@@ -69,7 +69,7 @@ const SinglProduct = () => {
     
   }
   const handleChange = (newValue) => {
-    console.log(newValue)
+    
     setRating(newValue);
 };
 
@@ -180,8 +180,8 @@ const classes = useStyles();
       </div>
       </div>
       <div>
-      <textarea className={classes.textarea} rows="4" cols="50" name="comment" form="usrform">
-        Write your comment here...</textarea>
+      <textarea className={classes.textarea} placeholder='Write your comment here...' rows="4" cols="50" name="comment" form="usrform">
+        </textarea>
       </div>
       <div className={classes.submit}>
         <button className={classes.btn} type='submit'>SUBMIT</button>

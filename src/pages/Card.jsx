@@ -48,6 +48,7 @@ useEffect(() => {
                   amount:cart.totale*100,
                   
               });
+              console.log(res)
               navigate('/success')
             }catch(error){
             console.log(error)

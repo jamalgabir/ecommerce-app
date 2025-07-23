@@ -60,16 +60,16 @@ export default function Register() {
 
   useEffect(()=>{
      const mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if(!data.firstName||!data.lastName|!data.password||!data.email||!data.email.match(mailformat)){
+    if(!data.firstname||!data.lastname|!data.password||!data.email||!data.email.match(mailformat)){
       return setDisable(true)
     }
       setDisable(false)
-  },[data.firstName,data.lastName,data.email,data.password]);
+  },[data.firstname,data.lastname,data.email,data.password]);
 
   const handleSubmit = async (e)=>{
     e.preventDefault();
     try{
-      if(!data.firstName||!data.lastName||!data.email||!data.password){
+      if(!data.firstname||!data.lastname||!data.email||!data.password){
         return setMessage("Please fill in all fields !")
       }
       setLoading(true);
@@ -111,7 +111,7 @@ export default function Register() {
                 <TextField
                 onChange={(e)=>handleChange(e)}
                   autoComplete="given-name"
-                  name="firstName"
+                  name="firstname"
                   required
                   fullWidth
                   id="firstName"
@@ -126,7 +126,7 @@ export default function Register() {
                   fullWidth
                   id="lastName"
                   label="Last Name"
-                  name="lastName"
+                  name="lastname"
                   autoComplete="family-name"
                 />
               </Grid>

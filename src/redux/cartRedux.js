@@ -11,8 +11,14 @@ const cartSlice =  createSlice({
 
     reducers : {
         addProduct: (state, action) =>{
-            state.products.push(action.payload );
-            state.totale += action.payload.price * action.payload.quantity;
+            const existing = state.products.filter((item) => JSON.stringify(item) === JSON.stringify(action.payload) );
+            if(existing.length===0){
+                state.products.push(action.payload );
+                state.totale += action.payload.price * action.payload.quantity;
+            }else{
+                console.log("existing item !")
+            }
+            
         },
         deleteProduct: (state,action)=>{
                 // state.quantity = state.quantity>0?state.quantity-=action.payload.quantity:state.quantity;

@@ -1,7 +1,7 @@
 export const sliderItem = [
     {
         id:1,
-        img: "https://ca1-atria-watford.dccdn.net/images/home/_765x740_crop_center-center_90_none/home-hero-2.png?v=1637232103",
+        img: "https://images.pexels.com/photos/8396740/pexels-photo-8396740.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         title: 'SUMMER SALE',
         desc: "DON'T COMPROMISE ON STYLE GET FLAT 30% OFF FOR NEW AVIVALS",
         cat: "woman",

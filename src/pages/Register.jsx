@@ -42,7 +42,7 @@ const Register = () => {
   };
 
   const validateForm = () => {
-    if (!formData.firstName || !formData.lastName || !formData.email || !formData.password) {
+    if (!formData.firstname || !formData.lastname || !formData.email || !formData.password) {
       setError('Please fill in all fields');
       return false;
     }
@@ -68,8 +68,8 @@ const Register = () => {
     try {
       setLoading(true);
       const response = await authService.register({
-        firstName: formData.firstName,
-        lastName: formData.lastName,
+        firstname: formData.firstname,
+        lastname: formData.lastname,
         email: formData.email,
         password: formData.password,
       });
@@ -130,9 +130,9 @@ const Register = () => {
               <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
-                  name="firstName"
+                  name="firstname"
                   label="First Name"
-                  value={formData.firstName}
+                  value={formData.firstname}
                   onChange={handleChange}
                   required
                   InputProps={{
@@ -147,9 +147,9 @@ const Register = () => {
               <Grid item xs={12} sm={6}>
                 <TextField
                   fullWidth
-                  name="lastName"
+                  name="lastname"
                   label="Last Name"
-                  value={formData.lastName}
+                  value={formData.lastname}
                   onChange={handleChange}
                   required
                   InputProps={{
